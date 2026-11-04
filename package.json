@@ -34,8 +34,8 @@
         "typescript": "^5.8.3"
     },
     "engines": {
-        "node": ">= 20",
-        "npm": ">= 9"
+        "node": ">= 24",
+        "npm": ">= 11"
     },
     "repository": {
         "type": "git",
