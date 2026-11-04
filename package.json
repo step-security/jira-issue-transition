@@ -1,0 +1,55 @@
+{
+    "name": "jira-issue-transition",
+    "version": "1.0.0",
+    "description": "A Github action that allows to transition a Jira issue. During the transition different information can be provided that may be required by the transition.",
+    "main": "dist/index.js",
+    "author": "https://github.com/frieder",
+    "license": "MIT",
+    "scripts": {
+        "all": "npm i && npm run format-check && npm run lint && npm run build",
+        "build": "tsc -noEmit && esbuild src/index.ts --outfile=dist/index.js --platform=node --bundle --minify",
+        "lint": "eslint . --ext .ts",
+        "format": "prettier \"**/*.{ts,md,json,yml}\" --write",
+        "format-check": "prettier \"**/*.{ts,md,json,yml}\" --check"
+    },
+    "pre-commit": [
+        "format-check",
+        "lint",
+        "build"
+    ],
+    "dependencies": {
+        "@actions/core": "^3.0.0",
+        "axios": "^1.15.0",
+        "axios-retry": "^4.5.0",
+        "yaml": "^2.8.3"
+    },
+    "devDependencies": {
+        "@types/node": "^20.12.12",
+        "@typescript-eslint/parser": "^7.18.0",
+        "@typescript-eslint/eslint-plugin": "^7.18.0",
+        "esbuild": "^0.28.0",
+        "eslint": "^8.57.0",
+        "eslint-config-prettier": "^10.1.8",
+        "prettier": "^3.8.3",
+        "typescript": "^5.8.3"
+    },
+    "engines": {
+        "node": ">= 20",
+        "npm": ">= 9"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/frieder/jira-issue-transition.git"
+    },
+    "keywords": [
+        "github",
+        "action",
+        "atlassian",
+        "jira",
+        "issue",
+        "transition",
+        "screen",
+        "field",
+        "update"
+    ]
+}
