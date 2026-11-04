@@ -1,0 +1,41 @@
+# A workflow that is triggered by both regular and dependabot PRs.
+# Be aware that dependabot uses its own secret store.
+
+name: Pull Request Check
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  check:
+    name: Test Action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: "npm"
+
+      - name: Install NPM Libs
+        run: npm i
+
+      - name: Run Format Check
+        run: npm run format-check
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Build Code
+        run: npm run build
