@@ -1,6 +1,6 @@
 name: Jira Issue Transitions
 description: Transition Jira issue(s) to a target status.
-author: frieder
+author: "step-security"
 branding:
   icon: git-pull-request
   color: black
@@ -62,5 +62,5 @@ inputs:
     description: A resolution to be set on the Jira issue upon transition.
     required: false
 runs:
-  using: node20
+  using: node24
   main: ./dist/index.js

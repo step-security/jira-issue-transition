@@ -4,13 +4,11 @@
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/step-security/jira-issue-transition/pr.yml?label=Build%20Status)](https://github.com/step-security/jira-issue-transition/actions/workflows/pr.yml)
 [![Open Issues](https://img.shields.io/github/issues-raw/step-security/jira-issue-transition?label=Open%20Issues)](https://github.com/step-security/jira-issue-transition/issues?q=is%3Aopen+is%3Aissue)
-[![Sonar Issues](https://img.shields.io/sonar/violations/frieder_jira-issue-transition/main?format=long&server=https%3A%2F%2Fsonarcloud.io&label=Sonar%20Violations)](https://sonarcloud.io/project/overview?id=frieder_jira-issue-transition)
-[![Known Vulnerabilities](https://snyk.io/test/github/step-security/jira-issue-transition/badge.svg)](https://snyk.io/test/github/step-security/jira-issue-transition)
 
 A GitHub action to update properties of an existing Jira issue.
 
 > -   Only supports Jira Cloud.
-> -   Requires [Jira Login Action](https://github.com/marketplace/actions/atlassian-jira-login).
+> -   Requires [Jira Login Action](https://github.com/step-security/gha-jira-login).
 
 
 ## Usage
@@ -26,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Jira Login
-        uses: frieder/gha-jira-login@v1
+        uses: step-security/gha-jira-login@v1
         env:
           JIRA_BASE_URL: ${{ vars.JIRA_BASE_URL }}
           JIRA_USER_EMAIL: ${{ vars.JIRA_USER_EMAIL }}
@@ -89,14 +87,14 @@ ticket and then apply conditions on the transition steps. Following is an exampl
 ```yaml
 steps:
   - name: Jira Login
-    uses: frieder/gha-jira-login@v1
+    uses: step-security/gha-jira-login@v1
     env:
       JIRA_BASE_URL: ${{ vars.JIRA_BASE_URL }}
       JIRA_USER_EMAIL: ${{ vars.JIRA_USER_EMAIL }}
       JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
   - name: Get Issue Properties
-    uses: frieder/jira-issue-info@v1
+    uses: step-security/jira-issue-info@v1
     with:
       issue: XYZ-123
     id: issue

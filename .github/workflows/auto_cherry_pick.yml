@@ -2,7 +2,7 @@ name: Auto Cherry-Pick from Upstream
 
 on:
   workflow_run:
-    workflows: [ "Release GitHub Actions" ]
+    workflows: ["Release GitHub Actions"]
     types:
       - completed
 
@@ -16,9 +16,17 @@ on:
         description: "Run mode: cherry-pick or verify"
         required: false
         default: "cherry-pick"
+      node_version:
+        description: "Node.js version to use"
+        required: false
+        default: "24"
+      script:
+        description: "Specify the npm/yarn script to run"
+        required: false
+        default: "npm run all"
 
   pull_request:
-    types: [ opened, synchronize, labeled ]
+    types: [opened, synchronize, labeled]
 
 permissions:
   contents: write
@@ -35,3 +43,5 @@ jobs:
       repo-name: "jira-issue-transition"
       base_branch: ${{ inputs.base_branch || 'main' }}
       mode: ${{ github.event_name == 'pull_request' && 'verify' || inputs.mode || 'cherry-pick' }}
+      node_version: ${{ inputs.node_version || '24' }}
+      script: ${{ inputs.script || 'npm run all' }}

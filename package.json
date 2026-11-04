@@ -1,9 +1,9 @@
 {
     "name": "jira-issue-transition",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "description": "A Github action that allows to transition a Jira issue. During the transition different information can be provided that may be required by the transition.",
     "main": "dist/index.js",
-    "author": "https://github.com/frieder",
+    "author": "step-security",
     "license": "MIT",
     "scripts": {
         "all": "npm i && npm run format-check && npm run lint && npm run build",
@@ -19,7 +19,7 @@
     ],
     "dependencies": {
         "@actions/core": "^3.0.0",
-        "axios": "^1.15.0",
+        "axios": "^1.21.0",
         "axios-retry": "^4.5.0",
         "yaml": "^2.8.3"
     },
@@ -39,7 +39,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/frieder/jira-issue-transition.git"
+        "url": "git+https://github.com/step-security/jira-issue-transition.git"
     },
     "keywords": [
         "github",
